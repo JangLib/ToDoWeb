@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        * {
+            font-family: 'Hi Melody', cursive;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            padding: 5vh;
+            margin-bottom: 10vh;
+            height: 10vh;
+            font-size: 10vh;
+            border-bottom: 3px solid black;
+            border-bottom-right-radius: 1vw;
+            border-bottom-left-radius: 1vw;
+            text-align: center;
+            box-shadow: 3px 3px black;
+            text-shadow: 3px 3px gray;
+            color: #da6613;
+            background: linear-gradient(90deg, #FAEB78, #FDF5E6);
+        }
+        body {
+            position: relative;
+            background-color: honeydew;
+        }
+        section {
+            position: absolute;
+            width: 80vw;
+            height: 50vh;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        div {
+            text-align: center;
+            margin-bottom: 3vh;
+            font-size: 2vw;
+        }
+        input {
+            width: 50vw;
+            height: 5vw;
+            font-size: 2vw;
+            border: 3px solid black;
+            background-color: peachpuff;
+            border-radius: 1vw;
+            text-align: center;
+            box-shadow: 1px 1px gray;
+        }
+        .btn-add {
+            width: 7vw;
+            height: 3vw;
+            margin: auto;
+            display: block;
+            border-radius: 1vw;
+            font-weight: bolder;
+            font-size: 2vw;
+            background-color: orange;
+            transition: 0.5s ease-in;
+        }
+        .btn-add:hover {
+            transform: scale(0.8);
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Task</h1>
+    <section>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                {{form.as_p}}
+            </div>
+            <input type="submit" value="ADD" class="btn-add">
+        </form>  
+    </section>
+</body>
+</html>

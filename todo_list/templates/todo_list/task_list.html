@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        h1 {            
+            padding: 5vh;
+            margin-bottom: 10vh;
+            height: 10vh;
+            font-size: 10vh;
+            border-bottom: 3px solid black;
+            border-bottom-right-radius: 1vw;
+            border-bottom-left-radius: 1vw;
+            text-align: center;
+            font-family: 'Hi Melody', cursive;
+            box-shadow: 3px 3px black;
+            text-shadow: 3px 3px gray;
+            color: #da6613;
+            background: linear-gradient(90deg, #FAEB78, #FDF5E6);
+        }
+        body {
+            position: relative;
+            background: linear-gradient(90deg, #FAFAB4, white);
+        }
+        table {
+            width: 70vw;
+            position: absolute;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 1vw;
+            box-shadow: 3px 3px black;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        thead tr {
+            background-color: orangered;
+        }
+        tbody td {
+            background-color: orange;
+        }
+        th {
+            border-radius: 1vw;
+            border-bottom: 1px solid black;
+        }
+        td {
+            border-radius: 1vw;
+            font-size: 2vw;
+        }
+        .col-n {
+            width: 5vw;
+        }
+        .col-check {
+            width: 5vw;
+        }
+        .col-task {
+            width: 70vw;
+        }
+        .col-edit {
+            width: 10vw;
+        }
+        .col-delete {
+            width: 10vw;
+        }
+        .btn {
+            text-decoration: none;
+            color: rgb(22, 21, 21);
+        }
+        .btn-add a {
+            display: inline-block;
+            margin-left: 15%;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bolder;
+            border-radius: 10px;
+            text-shadow: 3px 3px gray;
+            font-family: 'Hi Melody', cursive;
+            transition: 0.5s ease-in;
+            color: orange;
+        }
+        .btn-add a:hover {
+            transform: scale(0.9);
+            color: orangered;
+        }
+        #cb {
+            width: 1.5vw;
+            height: 1.5vw;
+        }
+        #task-font {
+            font-family: 'Hi Melody', cursive;
+        }
+        #btn-update {
+            color: orangered;
+            transition: 0.2s ease-in;   
+        }
+        #btn-update:hover {
+            transform: scale(0.8);
+            color: rgb(255, 8, 0);
+        }
+        #btn-delete {
+            color: #800000;
+            transition: 0.2s ease-in;
+        }
+        #btn-delete:hover {
+            transform: scale(0.8);
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>TO DO List</h1>
+    <div class="btn-add">
+        <a href="{% url 'add' %}" class="btn"><i class="fas fa-plus-square"></i> ADD Task</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col-n">N</th>
+                <th class="col-check">Check</th>
+                <th class="col-task">Task</th>
+                <th class="col-edit">Edit</th>
+                <th class="col-delete">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Task in Tasks %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td><input type="checkbox" name="checkBox" id="cb"></td>
+                <td id="task-font">{{Task.title}}</td>
+                <td><a href="{% url 'update' pk=Task.id %}" class="btn"><i class="fas fa-edit" id="btn-update"></i></a></td>
+                <td><a href="{% url 'delete' pk=Task.id %}" class="btn"><i class="fas fa-trash-alt" id="btn-delete"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
